@@ -16,12 +16,12 @@ jobs:
     - uses: actions/checkout@v3
     - name: Construcao Imagem Docker
       uses: docker/build-push-action@v4.0.0
-        with:
-          context: ./src
-          file: ./src/Dockerfile
-          push: true
-          tags: |
-            mdlkr/app-teste:v1
+      with:
+        context: ./src
+        file: ./src/Dockerfile
+        push: true
+        tags: |
+          mdlkr/app-teste:v1
 
 
   
