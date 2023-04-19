@@ -13,15 +13,22 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
-    - name: Construcao Imagem Docker
-      uses: docker/build-push-action@v4.0.0
-      with:
-        context: ./src
-        file: ./src/Dockerfile
-        push: true
-        tags: |
-          mdlkr/app-teste:v1
+      - uses: actions/checkout@v3
+      
+      - name: Autenticacao no Docker Hub
+        uses: docker/login-action@v2.1.0
+        with:
+          usarname: ${{secrets.DOCKERHUB_USER}}
+          password: ${{secrets.DOCKERHUB_PWD}}
+      
+      - name: Construcao Imagem Docker
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: ./src
+          file: ./src/Dockerfile
+          push: true
+          tags: |
+            mdlkr/app-teste:v1
 
 
   
