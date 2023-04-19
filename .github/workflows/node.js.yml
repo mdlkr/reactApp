@@ -5,20 +5,15 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [ MAIN ]
   pull_request:
-    branches: [ $default-branch ]
+    branches: [ MAIN ]
 
 jobs:
   
   build:
 
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
