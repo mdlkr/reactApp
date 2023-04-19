@@ -10,6 +10,7 @@ on:
     branches: [ $default-branch ]
 
 jobs:
+  
   build:
 
     runs-on: ubuntu-latest
@@ -29,7 +30,14 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    
+    -name: Construcao Imagem Docker
+    -uses: docker/build-push-action@v4.0.0
+    with: 
+        context: ./src
+        file: ./src/Dockerfile
+        push: true
+        tags: mdlkr/app:v1
 
-    - uses: AppThreat/sast-scan-action@master
-      with:
-        type: "nodejs"
+  
+  
